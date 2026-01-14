@@ -1,84 +1,81 @@
-# SheafUI Official Starter Kit
+# 🇿🇲 ZamCalc
 
-The official starter kit to jumpstart your next Laravel application, powered by the SheafUI component platform.
+**ZamCalc** is an open-source platform providing a comprehensive suite of calculators specifically designed for the Zambian market. Whether you're calculating taxes, planning investments, or managing finances, ZamCalc aims to be the go-to resource for accurate and up-to-date calculations based on Zambian regulations and financial standards.
 
-## Installation
-to start using new laravel app using this skeleton
+## 🚀 Vision
 
-```shell
- laravel new example-name --using=sheaf/starter-kit
-```
+To empower Zambians with accessible, accurate, and easy-to-use financial tools that simplify complex calculations for individuals and businesses alike.
 
+## ✨ Upcoming Calculators
 
-##  Zero Dependency, Full Control
+- [ ] **Pay As You Earn (PAYE) Calculator** - Up-to-date with current ZRA tax bands.
+- [ ] **Government Bonds Investment Calculator** - Calculate yields and returns on GRZ bonds.
+- [ ] **NAPSA Calculator** - Determine statutory pension contributions.
+- [ ] **Value Added Tax (VAT) Calculator** - Quick Value Added Tax calculations for businesses.
+- [ ] **Building Cost Calculator** - Determing the cost of your construction projects
+<!-- - [ ] **Mortgage/Loan Calculator** - Plan your home or business loans with local interest rate trends. -->
 
-This starter kit requires no external dependencies and gives you **100% ownership** of your code. While powered by SheafUI resources, every line of code is yours to modify and customize as needed.
+## 🛠️ Tech Stack
 
-## ✨ Features
+Built with a modern, high-performance stack for a seamless user experience:
 
-- [x] **SheafUI Integration** - Optional setup for complete development with the SheafUI platform
-- [x] **Complete Auth System** - Login, register, logout, email verification, password reset/forgot, password confirmation - all with comprehensive tests
-- [x] **Clean Dark Theme** - Seamless light/dark mode switching
-- [x] **Flexible Toast System** - User-friendly notifications out of the box
-- [x] **Basic Account Management** - Update account information (name, email) and change password
+- **Laravel 12** - The PHP framework for web artisans.
+- **Livewire 4** - Full-stack reactivity with minimal JavaScript.
+- **Tailwind CSS 4** - Utility-first styling for a premium feel.
+- **SheafUI** - Accessible and customizable UI components for Laravel & Livewire.
+<!-- - **Pest 4** - Elegant and readable testing suite. -->
 
-> [!NOTE]
-> Dashboard and settings pages are temporary implementations. They will be refactored once the `sidebar`, `header`, and `navlist` components are built and integrated.
+## 📦 Installation
 
-> [!NOTE]
-> also avatar uplaod will be added once the file upload components is built and integrated
+To get started with local development:
 
+1. **Clone the repository:**
 
+   ```bash
+   git clone https://github.com/blessedzulu/zamcalc.git
+   cd zamcalc
+   ```
 
+2. **Install dependencies:**
 
-## Tech Stack
+   ```bash
+   composer install
+   npm install
+   ```
 
-- **Laravel 12** - Latest Laravel framework
-- **Livewire 3** - Modern reactive components  
-- **Heroicons** - Beautiful SVG icons via `wireui/heroicons`
-- **Sheaf CLI** - SheafUI command-line tools
-- **Tailwind 4** - Modern utility-first CSS framework
-- **Pest 4** - Elegant testing framework
+3. **Environment Setup:**
 
-## Included Components
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Your starter kit comes pre-loaded with essential UI components:
+4. **Run Migrations:**
 
-- [Icon](https://sheafui.dev/docs/components/icon) - SVG icon system
-- [Button](https://sheafui.dev/docs/components/button) - Customizable button variants
-- [Avatar](https://sheafui.dev/docs/components/avatar) - User profile images with fallbacks
-- [Dropdown](https://sheafui.dev/docs/components/dropdown) - Accessible dropdown menus
-- [Input](https://sheafui.dev/docs/components/input) - Form input controls
-- [Separator](https://sheafui.dev/docs/components/separator) - Visual content dividers
-- [Field](https://sheafui.dev/docs/components/field) - Form field wrapper
-- [Fieldset](https://sheafui.dev/docs/components/fieldset) - Grouped form controls
-- [Label](https://sheafui.dev/docs/components/label) - Accessible form labels
-- [Link](https://sheafui.dev/docs/components/link) - Styled navigation links
-- [Theme Switcher](https://sheafui.dev/docs/components/theme-switcher) - Light/dark mode toggle
-- [Toast](https://sheafui.dev/docs/components/toast) - Notification system
-- [Error](https://sheafui.dev/docs/components/error) - Error handling displays
-- [Text](https://sheafui.dev/docs/components/text) - Unified Text styling
-- [Heading](https://sheafui.dev/docs/components/heading) - Heading components
-- [Card](https://sheafui.dev/docs/components/card) - blocks of UI
+   ```bash
+   php artisan migrate
+   ```
 
-## Perfect For
+5. **Start Dev Server:**
+   ```bash
+   npm run dev
+   php artisan serve
+   ```
 
-- New Laravel projects requiring solid UI foundation.
-- Developers who want proven components without vendor lock-in.
-- Teams needing authentication and theming out of the box.
+## 🤝 Contributing
+
+Contributions welcome! Whether it's adding a new calculator, fixing a bug, or improving the UI, your help can make ZamCalc better for everyone.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b featurefeat/new-feature`)
+3. Commit your Changes (`git commit -m 'Add feat/new-feature'`)
+4. Push to the Branch (`git push origin featurefeat/new-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-Ready to build something amazing? Get started with SheafUI today! 🎉
-
-## Author 
-[MOHAMED CHARRAFI](https://github.com/CharrafiMed)
-
-## Others 
-
-the borders pattern used at home, auth pages was designed by [AYOUB EL HAJJI](https://github.com/Ayoubhj866)
-
-## License
-
-Sheaf UI is open source software licensed under the [MIT License](LICENSE).
-
+Built for Zambia 🇿🇲

@@ -1,5 +1,5 @@
 <x-slot:title>
-    {{ $title }}
+    {{ $title ?? '' }}
 </x-slot:title>
 
 <x-layouts.base>
