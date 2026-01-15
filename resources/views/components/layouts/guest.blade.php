@@ -1,5 +1,5 @@
 <x-slot:title>
-    {{ $title ?? 'Sheaf UI' }}
+    {{ $title ?? 'ZamCalc' }}
 </x-slot:title>
 
 <x-layouts.base>
