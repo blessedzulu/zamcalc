@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('layouts::guest')]
-new class extends Component {
+
+new #[Layout('layouts::guest')] class extends Component {
     public function sendVerification(): void {
         /** @var User $authUser */
         $authUser = Auth::user();

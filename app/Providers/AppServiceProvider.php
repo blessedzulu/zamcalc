@@ -17,5 +17,23 @@ class AppServiceProvider extends ServiceProvider {
      * Bootstrap any application services.
      */
     public function boot(): void {
+        // Livewire lifecycle hook to show a generic error toast for unhandled exceptions
+        \Livewire\Livewire::listen('exception', function ($component, $e, $stopPropagation) {
+            if (config('app.debug') || config('app.env') === 'local') {
+                return;
+            }
+
+            if (!$e instanceof \Illuminate\Validation\ValidationException) {
+                report($e);
+
+                $component->dispatch(
+                    'notify',
+                    content: 'An unexpected error occurred.',
+                    type: 'error',
+                );
+
+                $stopPropagation();
+            }
+        });
     }
 }

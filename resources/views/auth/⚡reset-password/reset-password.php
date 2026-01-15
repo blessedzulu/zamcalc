@@ -11,8 +11,8 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
-#[Layout('layouts::guest')]
-new class extends Component {
+
+new #[Layout('layouts::guest')] class extends Component {
     #[Locked]
     public string $token = '';
 

@@ -1,58 +1,27 @@
 <?php
 
-use App\Livewire\Concerns\HasToast;
 use App\Models\User;
-use Illuminate\Container\Attributes\CurrentUser;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Password;
-use Illuminate\Validation\ValidationException;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Illuminate\Validation\Rule;
+use Livewire\Attributes\Validate;
+use App\Livewire\Concerns\HasToast;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+use App\Livewire\Forms\Settings\AccountForm;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Container\Attributes\CurrentUser;
 
 new class extends Component {
     use HasToast;
 
-    #[Validate('required|string|min:3|max:12')]
-    public string $name = '';
-
-    #[Validate('required|string|email')]
-    public string $email = '';
-
-    #[Validate('required|string|current_password')]
-    public string $current_password = '';
-
-    #[Validate('required|string|confirmed|min:8')]
-    public string $password = '';
-
-    public string $password_confirmation = '';
+    public AccountForm $form;
 
     public function mount(#[CurrentUser] User $user) {
-        $this->name = $user->name;
-        $this->email = $user->email;
+        $this->form->mount($user);
     }
 
-    public function saveChanges(#[CurrentUser] User $user) {
-        $validated = $this->validate([
-            'name' => ['required', 'string', 'min:3', 'max:12'],
-            'email' => [
-                'required',
-                'string',
-                'lowercase',
-                'email',
-                'max:255',
-                Rule::unique(User::class)->ignore($user->id),
-            ],
-        ]);
-
-        $user->fill($validated);
-
-        // If the email changed we need to make it unverified, for security reasons
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
-
-        $user->save();
+    public function update(#[CurrentUser] User $user) {
+        $this->form->update($user);
 
         $this->toastSuccess('Your account has been updated.');
     }
@@ -60,24 +29,15 @@ new class extends Component {
     /**
      * Update the password for the currently authenticated user.
      */
-    public function updatePassword(#[CurrentUser] $user): void {
+    public function updatePassword(#[CurrentUser] User $user): void {
         try {
-            $validated = $this->validate([
-                'current_password' => ['required', 'string', 'current_password'],
-                'password' => ['required', 'string', Password::defaults(), 'confirmed'],
-            ]);
+            $this->form->updatePassword($user);
+
+            $this->toastSuccess('Your password has been updated.');
         } catch (ValidationException $e) {
-            $this->reset('current_password', 'password', 'password_confirmation');
+            $this->form->reset('current_password', 'password', 'password_confirmation');
 
             throw $e;
         }
-
-        $user->update([
-            'password' => Hash::make($validated['password']),
-        ]);
-
-        $this->reset('current_password', 'password', 'password_confirmation');
-
-        $this->toastSuccess('Your password has been updated.');
     }
 };

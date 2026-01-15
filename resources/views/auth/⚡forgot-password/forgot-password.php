@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Password;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('layouts::guest')]
-new class extends Component {
+
+new #[Layout('layouts::guest')] class extends Component {
     use HasToast;
 
     public string $email = '';

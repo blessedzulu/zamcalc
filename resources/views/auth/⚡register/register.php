@@ -5,8 +5,8 @@ use App\Support\Toast;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('layouts::guest')]
-new class extends Component {
+
+new #[Layout('layouts::guest')] class extends Component {
     public RegisterForm $form;
 
     public function register() {
