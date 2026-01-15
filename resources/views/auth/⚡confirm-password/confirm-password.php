@@ -1,16 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Livewire\Auth;
-
-// use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-final class ConfirmPassword extends Component {
+#[Layout('layouts::guest')]
+new class extends Component {
     public string $password = '';
 
     public function confirmPassword(): void {
@@ -35,9 +31,4 @@ final class ConfirmPassword extends Component {
             throw $th;
         }
     }
-
-    #[Layout('components.layouts.guest')]
-    public function render() {
-        return view('livewire.auth.confirm-password');
-    }
-}
+};

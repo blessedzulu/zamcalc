@@ -1,9 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Livewire\Settings;
-
 use App\Livewire\Concerns\HasToast;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
@@ -14,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-class Account extends Component {
+new class extends Component {
     use HasToast;
 
     #[Validate('required|string|min:3|max:12')]
@@ -84,8 +80,4 @@ class Account extends Component {
 
         $this->toastSuccess('Your password has been updated.');
     }
-
-    public function render() {
-        return view('livewire.settings.account');
-    }
-}
+};

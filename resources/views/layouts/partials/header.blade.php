@@ -28,7 +28,7 @@
             @endguest
 
             @auth
-                <x-user-dropdown />
+                <x-ui.user-dropdown />
             @endauth
 
             <x-ui.separator class="my-2" vertical />

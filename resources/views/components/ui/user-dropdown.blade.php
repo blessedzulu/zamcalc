@@ -1,6 +1,6 @@
 @php
     $user = Auth::user();
- @endphp
+@endphp
 
 <x-ui.dropdown position="bottom-end">
     <x-slot:button class="justify-center">
@@ -27,7 +27,7 @@
 
         <x-ui.dropdown.separator />
 
-        <form action="{{ route('app.auth.logout') }}" method="post" class="contents" {{-- this make the form does
+        <form action="{{ route('auth.logout') }}" method="post" class="contents" {{-- this make the form does
             contribute the layotu, so it does not break --}}>
             @csrf
             <x-ui.dropdown.item as="button" type="submit">

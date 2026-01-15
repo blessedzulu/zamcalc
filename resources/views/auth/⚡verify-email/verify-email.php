@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Livewire\Auth;
-
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-final class VerifyEmail extends Component {
+#[Layout('layouts::guest')]
+new class extends Component {
     public function sendVerification(): void {
         /** @var User $authUser */
         $authUser = Auth::user();
@@ -24,11 +22,4 @@ final class VerifyEmail extends Component {
 
         Session::flash('status', 'verification-link-sent');
     }
-
-    public function render() {
-        /** @var View $view */
-        $view = view('livewire.auth.verify-email');
-
-        return $view->layout('components.layouts.guest');
-    }
-}
+};

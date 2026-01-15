@@ -1,9 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Livewire\Auth;
-
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
@@ -11,11 +7,12 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
-use SensitiveParameter;
 
-final class ResetPassword extends Component {
+#[Layout('layouts::guest')]
+new class extends Component {
     #[Locked]
     public string $token = '';
 
@@ -58,11 +55,4 @@ final class ResetPassword extends Component {
 
         $this->redirectRoute('login', navigate: true);
     }
-
-    public function render() {
-        /** @var View $view */
-        $view = view('livewire.auth.reset-password');
-
-        return $view->layout('components.layouts.guest');
-    }
-}
+};

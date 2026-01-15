@@ -1,9 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Livewire\Auth;
-
 use App\Livewire\Concerns\HasToast;
 use App\Livewire\Forms\Auth\LoginForm;
 use App\Support\Toast;
@@ -12,8 +8,8 @@ use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('components.layouts.auth')]
-final class Login extends Component {
+
+new #[Layout('layouts::auth')] class extends Component {
     use HasToast;
 
     public LoginForm $form;
@@ -36,9 +32,4 @@ final class Login extends Component {
             $this->toastError('Something went wrong');
         }
     }
-
-    // #[Layout('components.layouts.guest')]
-    public function render() {
-        return view('livewire.auth.login');
-    }
-}
+};

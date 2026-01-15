@@ -1,16 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Livewire\Auth;
-
 use App\Livewire\Forms\Auth\RegisterForm;
 use App\Support\Toast;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('components.layouts.auth')]
-final class Register extends Component {
+#[Layout('layouts::guest')]
+new class extends Component {
     public RegisterForm $form;
 
     public function register() {
@@ -20,11 +16,4 @@ final class Register extends Component {
 
         $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
-
-    public function render() {
-        /** @var View $view */
-        $view = view('livewire.auth.register');
-
-        return $view->layout('components.layouts.guest');
-    }
-}
+};

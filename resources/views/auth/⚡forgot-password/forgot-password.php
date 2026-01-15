@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Livewire\Auth;
-
 use App\Livewire\Concerns\HasToast;
 use Illuminate\Support\Facades\Password;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-class ForgotPassword extends Component {
+#[Layout('layouts::guest')]
+new class extends Component {
     use HasToast;
 
-    public string $email;
+    public string $email = '';
 
     public function sendPasswordResetLink(): void {
         $this->validate([
@@ -32,11 +30,4 @@ class ForgotPassword extends Component {
 
         session()->flash('status', __($status));
     }
-
-    public function render() {
-        /** @var View $view */
-        $view = view('livewire.auth.forgot-password');
-
-        return $view->layout('components.layouts.guest');
-    }
-}
+};

@@ -1,40 +1,32 @@
 <?php
 
 use App\Actions\Auth\Logout;
-use App\Livewire;
-use App\Livewire\Auth\ConfirmPassword;
-use App\Livewire\Auth\ForgotPassword;
-use App\Livewire\Auth\Login;
-use App\Livewire\Auth\Register;
-use App\Livewire\Auth\ResetPassword;
-use App\Livewire\Auth\VerifyEmail;
-use App\Livewire\Dashboard;
-use App\Livewire\Settings\Account;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', Livewire\Home::class)->name('home');
+Route::livewire('/', 'pages::home')->name('home');
 
 /** AUTH ROUTES */
-Route::get('/register', Register::class)->name('register');
+Route::livewire('/register', 'auth::register')->name('register');
 
-Route::get('/login', Login::class)->name('login');
+Route::livewire('/login', 'auth::login')->name('login');
 
-Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
+Route::livewire('/forgot-password', 'auth::forgot-password')->name('forgot-password');
 
-Route::get('reset-password/{token}', ResetPassword::class)->name('password.reset');
+Route::livewire('reset-password/{token}', 'auth::reset-password')->name('password.reset');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', Dashboard::class)->name('dashboard');
-    Route::get('/settings/account', Account::class)->name('settings.account');
+    Route::livewire('/dashboard', 'pages::dashboard')->name('dashboard');
+    Route::livewire('/settings/account', 'pages::settings.account')->name('settings.account');
+    Route::livewire('/posts/create', 'pages::posts.create')->name('posts.create');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/auth/verify-email', VerifyEmail::class)
+    Route::livewire('/auth/verify-email', 'auth::verify-email')
         ->name('verification.notice');
     Route::post('/logout', Logout::class)
-        ->name('app.auth.logout');
-    Route::get('confirm-password', ConfirmPassword::class)
+        ->name('auth.logout');
+    Route::livewire('confirm-password', 'auth::confirm-password')
         ->name('password.confirm');
 });
 
